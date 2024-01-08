@@ -1,0 +1,3 @@
+﻿using Project;
+
+GeneratedCode.PrintColor();
