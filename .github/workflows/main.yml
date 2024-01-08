@@ -16,8 +16,34 @@ jobs:
       with:
         fetch-depth: 1
 
-    - name: Run project
+    - name: Run project (dotnet)
       run: |
         dotnet build
+        cd project
+        dotnet run
+
+  windows:
+    name: 'Windows'
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Run project (dotnet)
+      shell: cmd
+      run: |
+        dotnet build
+        cd project
+        dotnet run
+
+    - name: Run project (VisualStudio)
+      shell: cmd
+      run: |
+        dotnet clean
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
+        msbuild source-generator-bug.sln
         cd project
         dotnet run
