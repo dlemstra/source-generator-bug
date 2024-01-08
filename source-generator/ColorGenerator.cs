@@ -40,17 +40,19 @@ internal sealed class ColorGenerator : IIncrementalGenerator
         codeBuilder.AppendLine("using System;");
         codeBuilder.AppendLine("internal sealed partial class GeneratedCode {");
         codeBuilder.AppendLine("  public static void PrintColor() {");
+        codeBuilder.AppendLine("    Console.ForegroundColor = ConsoleColor.Magenta;");
 
         if (HasColorWithName("Red"))
         {
-            codeBuilder.AppendLine(@"  Console.WriteLine(""ColorGenerator.HasColorWithName returns true for Red"");");
+            codeBuilder.AppendLine(@"    Console.WriteLine(""ColorGenerator.HasColorWithName returns true for Red"");");
         }
 
         if (HasColorWithName("RebeccaPurple"))
         {
-            codeBuilder.AppendLine(@"  Console.WriteLine(""ColorGenerator.HasColorWithName returns true for RebeccaPurple"");");
+            codeBuilder.AppendLine(@"    Console.WriteLine(""ColorGenerator.HasColorWithName returns true for RebeccaPurple"");");
         }
 
+        codeBuilder.AppendLine("    Console.ResetColor();");
         codeBuilder.AppendLine("  }");
         codeBuilder.AppendLine("}");
 
